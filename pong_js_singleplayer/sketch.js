@@ -1,7 +1,7 @@
 //fx
-let racksound;
-let pointsound;
-let ost;
+let rackSound;
+let pointSound;
+let ostSound;
 
 //vars ball
 let xb = 300;
@@ -36,24 +36,24 @@ let enemypoints = 0;
 
 function setup() {
   createCanvas(600, 400);
-  ost.loop();
+  ostSound.loop();
 }
 
 function draw() {
   background(0);
   ball();
   racket(xr, yr);
-  colision_lib_racket(xr, yr);
+  colisionLibRacket(xr, yr);
   //racket enemy
   racket(xre, yre);
-  colision_lib_racket(xre, yre);
-  move_speed_ball();
-  colision_ball();
-  moveset_racket();
-  moveset_racket_enemy();
+  colisionLibRacket(xre, yre);
+  moveSpeedBall();
+  colisionBall();
+  movesetRacket();
+  movesetRacketEnemy();
   scoreboard();
   score();
-  ball_adjust();
+  ballAdjust();
 }
 
 function ball(){
@@ -64,12 +64,12 @@ function racket(x, y){
   rect(x, y, wr, hr);
 }
 
-function move_speed_ball(){
+function moveSpeedBall(){
   xb += velx;
   yb += vely;
 }
 
-function colision_ball(){
+function colisionBall(){
   if(xb + r > width || xb - r < 0){
     velx *= -1;
   } 
@@ -79,7 +79,7 @@ function colision_ball(){
   } 
 }
 
-function moveset_racket(){
+function movesetRacket(){
 
   if(keyIsDown(UP_ARROW)){
     yr += -8;
@@ -90,29 +90,29 @@ function moveset_racket(){
   }
 }
 
-function moveset_racket_enemy(){
+function movesetRacketEnemy(){
   velye = yb - yre - wr / 2 - 25;
   yre += velye + failchance;
-  fail_chance_calc();
+  failChanceCalc();
 }
 
 // raw code of colision
-function colision_racket(){
+function colisionRacket(){
   if(xb - r < xr + wr && yb - r < yr + hr && yb + r > yr){
     velx *= -1;
   }
 }
 
 // library colision 
-function colision_lib_racket(x, y){
+function colisionLibRacket(x, y){
   colide = collideRectCircle(x, y, wr, hr, xb, yb, r);
   if(colide){
     velx *= -1;
-    racksound.play();
+    rackSound.play();
   }
 }
 
-function fail_chance_calc(){
+function failChanceCalc(){
   if(enemypoints >= mypoints){
     failchance += 1;
     if(failchance >= 39){
@@ -140,7 +140,7 @@ function scoreboard(){
   text(enemypoints, 450, 26 )
 }
 
-function ball_adjust(){
+function ballAdjust(){
     if (xb - r < 0){
     xb = 23;
     }
@@ -149,17 +149,17 @@ function ball_adjust(){
 function score(){
   if(xb > 587){
     mypoints += 1;
-    pointsound.play();
+    pointSound.play();
   }
 
   if(xb < 13){
     enemypoints += 1;
-    pointsound.play();
+    pointSound.play();
   }
 }
 
 function preload(){
-  ost = loadSound("fx/trilha.mp3");
-  pointsound = loadSound("fx/ponto.mp3");
-  racksound = loadSound("fx/raquetada.mp3");
+  ostSound = loadSound("fx/trilha.mp3");
+  pointSound = loadSound("fx/ponto.mp3");
+  rackSound = loadSound("fx/raquetada.mp3");
 }

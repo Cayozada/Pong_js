@@ -159,7 +159,7 @@ function score(){
 }
 
 function preload(){
-  ostSound = loadSound("fx/trilha.mp3");
-  pointSound = loadSound("fx/ponto.mp3");
-  rackSound = loadSound("fx/raquetada.mp3");
+  ostSound = loadSound("trilha.mp3");
+  pointSound = loadSound("ponto.mp3");
+  rackSound = loadSound("raquetada.mp3");
 }

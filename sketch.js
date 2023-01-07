@@ -103,14 +103,14 @@ function colisionRacket(){
   }
 }
 
-// library colision 
-function colisionLibRacket(x, y){
-  colide = collideRectCircle(x, y, wr, hr, xb, yb, r);
-  if(colide){
-    velx *= -1;
-    rackSound.play();
-  }
-}
+// // library colision 
+// function colisionLibRacket(x, y){
+//   colide = collideRectCircle(x, y, wr, hr, xb, yb, r);
+//   if(colide){
+//     velx *= -1;
+//     rackSound.play();
+//   }
+// }
 
 function failChanceCalc(){
   if(enemypoints >= mypoints){

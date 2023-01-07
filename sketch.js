@@ -43,10 +43,10 @@ function draw() {
   background(0);
   ball();
   racket(xr, yr);
-  colisionLibRacket(xr, yr);
+  colisionRacket(xr, yr);
   //racket enemy
   racket(xre, yre);
-  colisionLibRacket(xre, yre);
+  colisionRacket(xre, yre);
   moveSpeedBall();
   colisionBall();
   movesetRacket();

@@ -43,10 +43,10 @@ function draw() {
   background(0);
   ball();
   racket(xr, yr);
-  colisionRacket(xr, yr);
+  colisionLibRacket(xr, yr);
   //racket enemy
   racket(xre, yre);
-  colisionRacket(xre, yre);
+  colisionLibRacket(xre, yre);
   moveSpeedBall();
   colisionBall();
   movesetRacket();
@@ -104,13 +104,13 @@ function colisionRacket(){
 }
 
 // // library colision 
-// function colisionLibRacket(x, y){
-//   colide = collideRectCircle(x, y, wr, hr, xb, yb, r);
-//   if(colide){
-//     velx *= -1;
-//     rackSound.play();
-//   }
-// }
+function colisionLibRacket(x, y){
+  colide = collideRectCircle(x, y, wr, hr, xb, yb, r);
+  if(colide){
+    velx *= -1;
+    rackSound.play();
+  }
+}
 
 function failChanceCalc(){
   if(enemypoints >= mypoints){

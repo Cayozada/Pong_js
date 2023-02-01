@@ -6,7 +6,7 @@ let ostSound;
 //vars ball
 let xb = 300;
 let yb= 200;
-let db = 13;
+let db = 17;
 let r = db / 2;
 
 //vars racket

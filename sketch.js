@@ -6,28 +6,28 @@ let ostSound;
 //vars ball
 let xb = 300;
 let yb= 200;
-let db = 25;
+let db = 13;
 let r = db / 2;
 
 //vars racket
-let xr = 7;
+let xr = 5;
 let yr= 150;
-let wr = 15;
-let hr = 110;
+let wr = 9;
+let hr = 75;
 
 //vars racket enemy
-let xre = 575;
+let xre = 585;
 let yre= 150;
-let wre = 15;
-let hre = 110;
+let wre = 9;
+let hre = 75;
 let velye;
-let failchance = 0;
+let failchance = 5;
 
 let colide = false;
 
 //vars velocity
-let velx = 8;
-let vely = 8;
+let velx = 7.5;
+let vely = 7.5;
 
 // vars points
 let mypoints = 0;
@@ -80,18 +80,27 @@ function colisionBall(){
 }
 
 function movesetRacket(){
-
   if(keyIsDown(UP_ARROW)){
-    yr += -8;
+    if(RacketCanMoveUp()){
+      yr -= 0;
+    }
+    else{
+      yr -=8
+    }
   }
 
   if(keyIsDown(DOWN_ARROW)){
-    yr += 8;
+    if (RacketCanMoveDown()){
+      yr += 0;
+    }
+    else {
+        yr += 8;
+    }
   }
 }
 
 function movesetRacketEnemy(){
-  velye = yb - yre - wr / 2 - 25;
+  velye = yb - yre - wr / 2 - 30;
   yre += velye + failchance;
   failChanceCalc();
 }
@@ -120,8 +129,8 @@ function failChanceCalc(){
     }
   } else {
     failchance -= 1;
-    if(failchance <= 35){
-      failchance = 35;
+    if(failchance <= 40){
+      failchance = 37;
     }
   }
 }
@@ -144,18 +153,29 @@ function ballAdjust(){
     if (xb - r < 0){
     xb = 23;
     }
+    if (xb + r > 600){
+      xb = 580;
+    }
 }
 
 function score(){
-  if(xb > 587){
+  if(xb > 593){
     mypoints += 1;
     pointSound.play();
   }
 
-  if(xb < 13){
+  if(xb < 7){
     enemypoints += 1;
     pointSound.play();
   }
+}
+
+function RacketCanMoveDown(){
+  return yr > 326;
+}
+
+function RacketCanMoveUp(){
+  return yr < 1;
 }
 
 function preload(){

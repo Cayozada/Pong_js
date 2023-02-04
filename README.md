@@ -6,6 +6,6 @@
 ### Gameplay
 ![Pong Js Gameplay!](https://cdn.discordapp.com/attachments/974114124608962611/1071490478668795945/pongjs.gif "Pong_js")
 
-**codigo com ambos modos de jogo acima 👆**
+**codigo 👆**
 
 **Feito durante o curso de recriação de jogos classicos com logica de javascript na Alura sob a tutoria do professor Guilherme Lima**
